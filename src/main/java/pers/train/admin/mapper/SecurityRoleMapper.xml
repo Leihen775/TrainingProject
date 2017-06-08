@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="pers.student.admin.dao.SecurityRoleMapper">
+
+
+<!-- role resultMap -->
+<resultMap type="pers.student.admin.po.SecurityRole" id="roleResultMap">
+	<id column="id" property="id"/>
+	<result column="role_code" property="roleCode"/>
+	<result column="role_name" property="roleName"/>
+</resultMap>
+
+<!-- 定义sql 片段 -->
+<sql id="delete_role_where">
+
+	<if test="ids !=null and ids!='' ">
+		<!-- foreach  遍历集合  拼接sql  id in(1,2) -->
+         <foreach collection="ids" item="item" open="id in(" close=")" separator="," >        
+         	#{item}
+         </foreach> 
+	</if>
+
+</sql>
+
+<!-- 获取所有角色列表 -->
+<select id="selectAll" resultMap="roleResultMap">
+select * from ps_security_role
+</select>
+
+<!-- 模糊查询 -->
+<select id="selectRoleByToken" parameterType="java.lang.String" resultMap="roleResultMap">
+select * from ps_security_role where role_name LIKE '%${value}%' OR role_code LIKE '%${value}%'
+</select>
+
+<!-- 添加角色 -->
+<insert id="insert" parameterType="pers.student.admin.po.SecurityRole">
+    <!-- 主键值返回 -->
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+    
+    insert into ps_security_role (role_name,role_code) 
+    values(#{roleName},#{roleCode})
+    
+</insert>
+
+<!-- 批量删除 -->
+<delete id="deleteBatch" parameterType="pers.student.admin.po.SecurityRole">
+   delete from ps_security_role 
+   <where>
+       <include refid="delete_role_where"/>
+   </where>
+</delete>
+
+
+</mapper>

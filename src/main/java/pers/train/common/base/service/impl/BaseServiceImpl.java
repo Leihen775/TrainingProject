@@ -29,7 +29,7 @@ import pers.train.common.base.service.BaseService;
  * 
  * 该类需要注意：
  * <ul>
- *    <li>在该基类中，必须注入所有要用到的mapper接口，否则报错</li>
+ *    <li>在该基类中，必须注入所有要用到的xxxMapper，类型为接口，否则报错</li>
  *    <li>其他内容不可乱动</li>
  * </ul>
  * @author mingshan
