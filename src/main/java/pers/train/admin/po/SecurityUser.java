@@ -34,6 +34,21 @@ public class SecurityUser {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date addTime;
 	
+	//过期时间
+	private Long outDate;
+	
+	//验证
+	private String validataCode;
+
+	//用户权限	
+	List<SecurityPermission> permission;
+	
+	//用户的角色
+	private String roleName;
+	
+	//批量删除
+	private List<Integer> ids;
+	
 	
 	public int getId() {
 		return id;
@@ -92,4 +107,47 @@ public class SecurityUser {
 		this.addTime = addTime;
 	}
 
+	public Long getOutDate() {
+		return outDate;
+	}
+
+	public void setOutDate(Long outDate) {
+		this.outDate = outDate;
+	}
+
+	public String getValidataCode() {
+		return validataCode;
+	}
+
+	public void setValidataCode(String validataCode) {
+		this.validataCode = validataCode;
+	}
+
+	public List<SecurityPermission> getPermission() {
+		return permission;
+	}
+
+	public void setPermission(List<SecurityPermission> permission) {
+		this.permission = permission;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public List<Integer> getIds() {
+		return ids;
+	}
+
+	public void setIds(List<Integer> ids) {
+		this.ids = ids;
+	}
+
+	
+	
+	
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
   
-<mapper namespace="pers.student.admin.dao.SecurityRoleMapper">
+<mapper namespace="pers.train.admin.dao.SecurityRoleMapper">
 
 
 <!-- role resultMap -->
-<resultMap type="pers.student.admin.po.SecurityRole" id="roleResultMap">
+<resultMap type="pers.train.admin.po.SecurityRole" id="roleResultMap">
 	<id column="id" property="id"/>
 	<result column="role_code" property="roleCode"/>
 	<result column="role_name" property="roleName"/>
@@ -36,7 +36,7 @@ select * from ps_security_role where role_name LIKE '%${value}%' OR role_code LI
 </select>
 
 <!-- 添加角色 -->
-<insert id="insert" parameterType="pers.student.admin.po.SecurityRole">
+<insert id="insert" parameterType="pers.train.admin.po.SecurityRole">
     <!-- 主键值返回 -->
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
         SELECT LAST_INSERT_ID()
@@ -48,7 +48,7 @@ select * from ps_security_role where role_name LIKE '%${value}%' OR role_code LI
 </insert>
 
 <!-- 批量删除 -->
-<delete id="deleteBatch" parameterType="pers.student.admin.po.SecurityRole">
+<delete id="deleteBatch" parameterType="pers.train.admin.po.SecurityRole">
    delete from ps_security_role 
    <where>
        <include refid="delete_role_where"/>

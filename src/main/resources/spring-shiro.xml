@@ -27,9 +27,9 @@
     2. 配置 CacheManager. 
     2.1 需要加入 ehcache 的 jar 包及配置文件. 
     -->     
-     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
 
-        <property name="cacheManagerConfigFile" value="classpath:config/ehcache.xml"/> 
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/> 
     </bean> 
     
     <bean id="authenticator" 
@@ -42,7 +42,7 @@
     <!-- 
     	3. 配置 Realm 
     -->     
-    <bean id="jdbcRealm" class="pers.student.admin.realm.MyRealm">
+    <bean id="jdbcRealm" class="pers.train.admin.realm.MyRealm">
     	<property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
     
@@ -124,9 +124,9 @@
     	factory-bean="filterChainDefinitionMapBuilder" factory-method="buildFilterChainDefinitionMap"></bean>
     
     <bean id="filterChainDefinitionMapBuilder"
-    	class="pers.student.admin.factory.FilterChainDefinitionMapBuilder"></bean>
+    	class="pers.train.admin.factory.FilterChainDefinitionMapBuilder"></bean>
      
     <!-- 自定义的过滤器，用来判断当前用户是否是roleOrFilter["comm,test"]中的某个角色 -->  
-    <bean id="roleOrFilter" class="pers.student.admin.filter.CustomRolesAuthorizationFilter" />  
+    <bean id="roleOrFilter" class="pers.train.admin.filter.CustomRolesAuthorizationFilter" />  
 
 </beans>

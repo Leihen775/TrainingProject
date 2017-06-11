@@ -11,8 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import pers.train.admin.dao.SecurityResourcesMapper;
+import pers.train.admin.dao.SecurityRoleMapper;
 import pers.train.admin.dao.SecurityUserMapper;
+import pers.train.admin.dao.SecurityUserToRoleMapper;
 import pers.train.common.base.dao.BaseMapper;
 import pers.train.common.base.service.BaseService;
 
@@ -53,6 +55,14 @@ public class BaseServiceImpl<T> implements BaseService<T>{
  	@Autowired
  	private SecurityUserMapper securityUserMapper;
  	
+ 	@Autowired
+ 	private SecurityResourcesMapper securityResourcesMapper;
+ 	
+ 	@Autowired
+ 	private SecurityRoleMapper securityRoleMapper;
+ 	
+ 	@Autowired 
+ 	private SecurityUserToRoleMapper securityUserToRoleMapper;
  	
     public  BaseServiceImpl(){
     	 //通过反射机制获取子类传递过来的实体类型信息

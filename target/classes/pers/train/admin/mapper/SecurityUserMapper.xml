@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
   
-<mapper namespace="pers.student.admin.dao.SecurityUserMapper">  
+<mapper namespace="pers.train.admin.dao.SecurityUserMapper">  
 
 <!-- 用户信息 resultMap -->
- <resultMap type="pers.student.admin.po.SecurityUser" id="userResultMap">
+ <resultMap type="pers.train.admin.po.SecurityUser" id="userResultMap">
 	 	<!-- id表示查询结果集中唯一标识 
 	 	column：查询出来的列名
 	 	property：type指定的pojo类型中的属性名
@@ -22,10 +22,10 @@
 </resultMap>
 
 <!-- 用户的权限  resultMap-->
-<resultMap type="pers.student.admin.po.SecurityUser" id="userPermissionResultMap">
+<resultMap type="pers.train.admin.po.SecurityUser" id="userPermissionResultMap">
 	<id column="id" property="id"/>
 
-	<collection property="permission" ofType="pers.student.admin.po.SecurityPermission">
+	<collection property="permission" ofType="pers.train.admin.po.SecurityPermission">
 		<id column="id" property="id"/>
 		<result column="permission_name" property="permissionName"/>
 	</collection>
@@ -63,7 +63,7 @@
 </select>
 
 <!-- 根据用户某一unique字段查询信息 -->
-<select id="selectByUniqueFiled" parameterType="pers.student.admin.po.SecurityUser" resultMap="userResultMap">
+<select id="selectByUniqueFiled" parameterType="pers.train.admin.po.SecurityUser" resultMap="userResultMap">
 	select * from ps_security_user 
      <where>
       		<!--引用sql片段  -->
@@ -118,7 +118,7 @@
 </select>
 
 <!-- 添加用户 -->
-<insert id="insert" parameterType="pers.student.admin.po.SecurityUser">
+<insert id="insert" parameterType="pers.train.admin.po.SecurityUser">
     <!-- 主键值返回 -->
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
         SELECT LAST_INSERT_ID()
@@ -130,7 +130,7 @@
 </insert>
 
 <!-- 删除用户 -批量-->
-<delete id="deleteBatch"  parameterType="pers.student.admin.po.SecurityUser">
+<delete id="deleteBatch"  parameterType="pers.train.admin.po.SecurityUser">
    delete from ps_security_user
    <where>
      <include refid="query_user_where"></include>
@@ -139,7 +139,7 @@
 </delete>
 
 <!-- 修改用户 -->
-<update id="updateByPrimaryKeySelective" parameterType="pers.student.admin.po.SecurityUser">
+<update id="updateByPrimaryKeySelective" parameterType="pers.train.admin.po.SecurityUser">
 	update ps_security_user 
 	<set>
 	      <if test="userName !=null and userName !=''">
